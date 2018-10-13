@@ -50,22 +50,24 @@ public class Main {
 
                 case 1:    // Affiche la demande de saisie pour le type du compte a creer, puis affecte ce type de compte saisi dans la variable.
 
-                    System.out.println("Veuillez ecrire [courant] ou [epargne] pour definir le type du compte que vous souhaitez ajouter :");
-                    typeDeCompte = lectureClavier.next();
+                    do {
+                        System.out.println("Veuillez ecrire [courant] ou [epargne] pour definir le type du compte que vous souhaitez ajouter :");
+                        typeDeCompte = lectureClavier.next();
 
-                    switch (typeDeCompte) {
+                        switch (typeDeCompte) {
 
-                        case "epargne":
-                            verificationCompteEpargne = true;
-                            break;
+                            case "epargne":
+                                verificationCompteEpargne = true;
+                                break;
 
-                        case "courant":
-                            verificationCompteCourant = true;
-                            break;
+                            case "courant":
+                                verificationCompteCourant = true;
+                                break;
 
-                        default:
-                            System.out.println("Ce type de compte n'existe pas");
-                    }
+                            default:
+                                System.out.println("Ce type de compte n'existe pas");
+                        }
+                    } while (!verificationCompteCourant || !verificationCompteEpargne) ;
 
                     if (verificationCompteCourant || verificationCompteEpargne) {
                         System.out.println("Veuillez saisir le Numero du compte que vous souhaitez creer :");
@@ -109,6 +111,7 @@ public class Main {
                             repeterProgramme = false;
 
                     } else {
+
                         System.out.println("Il n'existe pas de compte enregistre sous ce numero saisi");
                         System.out.println("Pour retourner au menu, saisissez le chiffre [1], sinon sur n'importe quel autre chiffre pour quitter le programme");
                         choixRetourAuMenuOuQuitter = lectureClavier.nextInt();
